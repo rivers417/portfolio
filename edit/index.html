@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>褚江贺 · 短剧剪辑作品集</title>
+<style>
+  :root{
+    --bg:#0d0d12;
+    --bg2:#15151d;
+    --card:#1b1b26;
+    --line:rgba(255,255,255,.08);
+    --txt:#f2f2f5;
+    --sub:#9a9aa8;
+    --accent:#ff5a3c;
+    --accent2:#ff8a3c;
+    --gold:#ffc857;
+    font-size:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ===== 顶部导航 ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,13,18,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:1.05rem;letter-spacing:.05em}
+  .logo span{color:var(--accent)}
+  nav .links{display:flex;gap:28px;font-size:.9rem;color:var(--sub)}
+  nav .links a:hover{color:var(--txt)}
+  @media(max-width:640px){nav .links{display:none}}
+
+  /* ===== Hero ===== */
+  header{position:relative;padding:110px 0 90px;background:
+    radial-gradient(600px 300px at 15% 20%,rgba(255,90,60,.16),transparent),
+    radial-gradient(700px 350px at 85% 80%,rgba(255,138,60,.10),transparent)}
+  .badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:.78rem;padding:4px 14px;border-radius:999px;letter-spacing:.2em;margin-bottom:22px}
+  h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.25}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{color:var(--sub);margin:20px 0 34px;max-width:640px;font-size:1.05rem}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:14px 30px;color:var(--sub);font-size:.9rem}
+  .hero-meta b{color:var(--txt);font-weight:600}
+  .cta{display:inline-block;margin-top:36px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:700;padding:13px 36px;border-radius:10px;transition:transform .2s}
+  .cta:hover{transform:translateY(-2px)}
+
+  /* ===== 数据条 ===== */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:-50px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;text-align:center}
+  .stat .num{font-size:1.7rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lab{color:var(--sub);font-size:.82rem;margin-top:4px}
+
+  /* ===== 通用 section ===== */
+  section{padding:80px 0 20px}
+  .sec-tag{color:var(--accent);font-size:.8rem;letter-spacing:.3em;font-weight:700}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin:8px 0 36px}
+  h2 small{color:var(--sub);font-size:.95rem;font-weight:400;margin-left:12px}
+
+  /* ===== 项目案例 ===== */
+  .case{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:38px;margin-bottom:34px}
+  .case.flip{grid-template-columns:.9fr 1.1fr}
+  .case.flip .case-text{order:2}
+  @media(max-width:860px){.case,.case.flip{grid-template-columns:1fr}.case.flip .case-text{order:0}}
+  .case-tag{display:inline-block;background:rgba(255,90,60,.15);color:var(--accent);font-size:.75rem;padding:3px 12px;border-radius:6px;margin-bottom:12px;font-weight:700}
+  .case h3{font-size:1.35rem;font-weight:800;margin-bottom:6px}
+  .case .role{color:var(--gold);font-size:.85rem;margin-bottom:14px}
+  .case p{color:var(--sub);font-size:.95rem}
+  .case ul{margin:14px 0 0 18px;color:var(--sub);font-size:.92rem}
+  .case ul li{margin-bottom:6px}
+  .case ul b{color:var(--txt)}
+  .case-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .case-imgs img{width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;transition:transform .25s}
+  .case-imgs img:hover{transform:scale(1.03)}
+  .case-imgs .tall{grid-row:span 2;height:100%}
+
+  /* ===== 能力 ===== */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .skill .ico{font-size:1.5rem}
+  .skill h4{font-size:1rem;margin:10px 0 6px}
+  .skill p{color:var(--sub);font-size:.86rem}
+
+  /* ===== 时间线 ===== */
+  .timeline{border-left:2px solid var(--line);padding-left:26px;margin-left:8px}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item::before{content:"";position:absolute;left:-33px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,60,.2)}
+  .tl-item .time{color:var(--accent);font-size:.82rem;font-weight:700}
+  .tl-item h4{font-size:1.02rem;margin:4px 0}
+  .tl-item p{color:var(--sub);font-size:.88rem}
+
+  footer{margin-top:90px;border-top:1px solid var(--line);padding:44px 0 60px;text-align:center;color:var(--sub);font-size:.88rem}
+  footer b{color:var(--txt)}
+  footer .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 36px;margin:16px 0 22px}
+
+  /* ===== 视频播放区 ===== */
+  .vgrid{display:grid;gap:20px}
+  .vgrid-main{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .vgrid-small{grid-template-columns:repeat(2,1fr);gap:14px}
+  .vgrid-small .vmeta{min-height:auto;padding:10px 12px}
+  .vgrid-small .vmeta h4{font-size:.82rem;-webkit-line-clamp:2}
+  .vgrid-small .vmeta p{font-size:.7rem;margin-top:2px}
+  @media(min-width:900px){.vgrid-small{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:420px){.vgrid-small{grid-template-columns:repeat(2,1fr);gap:10px}}
+  .vitem{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .vitem:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .vframe{position:relative;aspect-ratio:9/16;background:#000}
+  .vframe video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .vmeta{padding:14px 16px;min-height:72px}
+  .vmeta h4{font-size:.95rem;font-weight:700;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vmeta p{color:var(--sub);font-size:.8rem;margin-top:5px}
+  .views{color:var(--accent);font-weight:800}
+
+  .vempty{border:1.5px dashed rgba(255,90,60,.35);border-radius:16px;padding:44px 24px;text-align:center;background:rgba(255,90,60,.04)}
+  .vempty-inner h4{font-size:1.05rem;margin:10px 0 8px}
+  .vempty-inner p{color:var(--sub);font-size:.88rem;max-width:520px;margin:0 auto}
+  .vbtn{display:inline-block;margin-top:18px;border:1px solid var(--accent);color:var(--accent);font-size:.85rem;font-weight:700;padding:9px 24px;border-radius:8px;transition:.2s}
+  .vbtn:hover{background:var(--accent);color:#fff}
+
+  /* ===== 数据战绩 ===== */
+  .sub-h{font-size:1.1rem;font-weight:800;margin:56px 0 20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sub-h small{color:var(--sub);font-size:.82rem;font-weight:400}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .shot img{width:100%;display:block;transition:transform .3s}
+  .shot:hover img{transform:scale(1.04)}
+  .shot figcaption{padding:12px 14px;font-size:.85rem;line-height:1.6}
+  .shot figcaption b{color:var(--accent);font-size:1rem}
+  .shot figcaption span{color:var(--sub);font-size:.78rem}
+
+
+  /* ===== 线上作品链接 ===== */
+  .links3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .linkslot{display:flex;align-items:center;gap:14px;background:var(--card);border:1px dashed rgba(255,255,255,.18);border-radius:12px;padding:18px 20px;transition:.2s}
+  .linkslot:hover{border-color:var(--accent);background:rgba(255,90,60,.05)}
+  .linkslot .n{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0}
+  .linkslot h4{font-size:.95rem}
+  .linkslot p{color:var(--sub);font-size:.78rem;margin-top:2px}
+  /* ===== 预约转化 ===== */
+  .convert{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px}
+  @media(max-width:640px){.convert{grid-template-columns:1fr;text-align:center}.convert .arrow{transform:rotate(90deg)}}
+  .convert figure{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .convert figure img{width:100%;display:block}
+  .convert figcaption{background:var(--card);padding:12px;font-size:.85rem;text-align:center;color:var(--sub)}
+  .convert figcaption b{color:var(--accent);font-size:1.1rem}
+  .convert .arrow{font-size:1.8rem;color:var(--accent);font-weight:900}
+</style>
+<style>
+  /* 追加：剪辑分类标签 */
+  .vtag{display:inline-block;background:rgba(255,90,60,.15);color:var(--accent);font-size:.68rem;padding:2px 9px;border-radius:5px;margin-bottom:8px;font-weight:700;letter-spacing:.06em}
+  .vgrid-small .vtag{font-size:.62rem;padding:2px 7px}
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:20px}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;transition:.2s}
+  .tool:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .tool .t{font-weight:700;font-size:.92rem}
+  .tool .d{color:var(--sub);font-size:.75rem;margin-top:3px}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .fstep{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .fstep .n{font-size:1.5rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .fstep h4{margin:8px 0 6px;font-size:1rem}
+  .fstep p{color:var(--sub);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">褚江贺<span>.</span>剪辑作品集</div>
+    <div class="links">
+      <a href="#works">剪辑作品</a>
+      <a href="#flow">工作流程</a>
+      <a href="#skills">能力工具</a>
+      <a href="#about">关于我</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="badge">短剧剪辑 / 影视后期</span>
+    <h1>让每一帧<br>都带着<em>情绪</em>。</h1>
+    <p class="hero-sub">短剧方向的剪辑师。熟悉竖屏短剧的节奏语法——高光切片、冲突前置、情绪卡点、悬念钩子。参与 10+ 影视项目后期制作，成片覆盖剧情切片、混剪二创、定妆花絮等官方物料全类型，作品已在抖音、红果平台上线。</p>
+    <div class="hero-meta">
+      <span>🎬 剪映 / Adobe 全家桶（PS · PR · AE）</span>
+      <span>📱 竖屏 9:16 · 多平台物料适配</span>
+    </div>
+    <a class="cta" href="#works">查看剪辑作品 ↓</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="num">10+</div><div class="lab">参与影视项目剪辑</div></div>
+    <div class="stat"><div class="num">3部</div><div class="lab">成片已在平台上线</div></div>
+    <div class="stat"><div class="num">175万</div><div class="lab">剪辑视频最高播放</div></div>
+    <div class="stat"><div class="num">8条</div><div class="lab">本页精选成片</div></div>
+    <div class="stat"><div class="num">30+</div><div class="lab">累计剪辑切片物料</div></div>
+    <div class="stat"><div class="num">9:16</div><div class="lab">竖屏全流程交付</div></div>
+  </div>
+</div>
+
+<!-- ============ 剧情切片 ============ -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-tag">STORY CUTS</div>
+    <h2>剧情切片<small>冲突前置 · 情绪钩子 · 高光提取</small></h2>
+    <div class="vgrid vgrid-main">
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e07_tiaoxin.mp4" poster="assets/posters/e07_tiaoxin.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">剧情切片</span><h4>《卖艺不卖身，王妃别加钱了》男主被挑衅</h4><p>冲突前置剪辑，前 3 秒制造对立情绪，节奏递进收在反转点</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e08_liyou.mp4" poster="assets/posters/e08_liyou.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">剧情切片</span><h4>《卖艺不卖身，王妃别加钱了》女主利诱男主</h4><p>对白节奏压缩，反应镜头卡点，强化人物博弈张力</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e03_nannvzhu.mp4" poster="assets/posters/e03_nannvzhu.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">CP向混剪</span><h4>《卖艺不卖身，王妃别加钱了》男女主混剪</h4><p>情绪线剪辑，音乐卡点串联高甜互动，服务 CP 向传播</p></div>
+      </div>
+    </div>
+
+    <div class="sub-h">角色混剪 & 群像二创<small>人物弧光 · 氛围叙事</small></div>
+    <div class="vgrid vgrid-small">
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e02_jsl_nvzhu.mp4" poster="assets/posters/e02_jsl_nvzhu.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">角色混剪</span><h4>《金丝笼》女主人物混剪</h4><p>单一角色弧光梳理，配乐驱动情绪转折</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e06_qunxiang.mp4" poster="assets/posters/e06_qunxiang.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">群像二创</span><h4>剧集角色群像混剪</h4><p>多角色平行叙事，节奏分层推进</p></div>
+      </div>
+    </div>
+
+    <div class="sub-h">官方物料 · 花絮 & 定妆<small>上线平台官方剪辑 · 精细包装</small></div>
+    <div class="vgrid vgrid-small">
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e01_huaxu.mp4" poster="assets/posters/e01_huaxu.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">官方花絮</span><h4>《金丝笼》第一集剪辑花絮</h4><p>平台在架官方物料，字幕包装完整，正片节奏严谨</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e04_dz_nv.mp4" poster="assets/posters/e04_dz_nv.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">定妆物料</span><h4>女主定妆花絮</h4><p>造型展示与人物气质结合，服务宣发预热</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video src="assets/videos/e05_dz.mp4" poster="assets/posters/e05_dz.jpg" controls playsinline preload="none"></video></div>
+        <div class="vmeta"><span class="vtag">定妆物料</span><h4>角色定妆混剪</h4><p>多机位素材整合，卡点呈现造型变化</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 工作流程 ============ -->
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-tag">WORKFLOW</div>
+    <h2>剪辑工作流程<small>从素材到成片的标准化交付</small></h2>
+    <div class="flow">
+      <div class="fstep"><div class="n">01</div><h4>剧本 & 素材梳理</h4><p>通读剧本与场记，标记高光点、冲突点、情绪点，建立素材索引</p></div>
+      <div class="fstep"><div class="n">02</div><h4>粗剪结构</h4><p>确定叙事线与钩子位，前 3 秒定生死，冲突前置、反转收尾</p></div>
+      <div class="fstep"><div class="n">03</div><h4>精剪 & 卡点</h4><p>对白节奏压缩、反应镜头匹配、音乐卡点，逐帧调情绪</p></div>
+      <div class="fstep"><div class="n">04</div><h4>包装 & 交付</h4><p>字幕、调色、转场包装，按平台规格输出竖屏多版本</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 能力工具 ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-tag">SKILLS & TOOLS</div>
+    <h2>能力与工具<small>剪辑手艺 + 效率工具链</small></h2>
+    <div class="grid3">
+      <div class="skill"><div class="ico">✂️</div><h4>剧情剪辑</h4><p>高光切片、冲突前置、悬念钩子设计，熟悉短剧「前3秒留存」节奏语法</p></div>
+      <div class="skill"><div class="ico">🎵</div><h4>音乐卡点</h4><p>配乐驱动叙事，重音踩点、情绪转场，BGM 与画面情绪同频</p></div>
+      <div class="skill"><div class="ico">🫥</div><h4>字幕 & 包装</h4><p>对白字幕、花字、角标包装规范熟练，兼顾观感与平台审核</p></div>
+      <div class="skill"><div class="ico">🎨</div><h4>调色质感</h4><p>基础校色到风格化调色，统一素材色调、突出人物氛围</p></div>
+      <div class="skill"><div class="ico">📐</div><h4>多平台适配</h4><p>抖音 / 红果 / 视频号竖屏规格输出，封面图设计与标题优化</p></div>
+      <div class="skill"><div class="ico">📢</div><h4>宣发思维</h4><p>懂运营的剪辑师——从传播角度反推剪辑策略，物料自带话题性</p></div>
+    </div>
+    <div class="tools">
+      <div class="tool"><div class="t">剪映专业版</div><div class="d">主力 · 竖屏短剧快剪</div></div>
+      <div class="tool"><div class="t">Premiere Pro</div><div class="d">精细剪辑 · 多轨结构</div></div>
+      <div class="tool"><div class="t">After Effects</div><div class="d">动效包装 · 片头片尾</div></div>
+      <div class="tool"><div class="t">Photoshop</div><div class="d">封面设计 · 物料配图</div></div>
+      <div class="tool"><div class="t">CapCut 国际版</div><div class="d">海外平台物料适配</div></div>
+      <div class="tool"><div class="t">AI 辅助工具</div><div class="d">智能字幕 · 素材整理</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 关于我 ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-tag">ABOUT ME</div>
+    <h2>关于我<small>剪辑 + 运营双重视角</small></h2>
+    <div class="case" style="display:block">
+      <div class="case-text" style="max-width:760px">
+        <span class="case-tag">乐道互娱 · 策划部宣传组</span>
+        <h3>褚江贺 · 短剧剪辑师</h3>
+        <div class="role">剪辑 / 后期制作 · 可立即到岗</div>
+        <p>影视宣传出身、以剪辑为核心手艺。在短剧宣发一线完成过剧情切片、CP 混剪、群像二创、定妆花絮、平台官方物料等全类型剪辑，其中《金丝笼》《卖艺不卖身，王妃别加钱了》等作品已在抖音、红果平台上线。懂宣发的剪辑视角让我不只完成「剪」，更完成「传」——每一条成片都为播放与转化服务。</p>
+        <ul>
+          <li><b>3 条剪辑成片已在平台在架上线</b>，官方花絮级交付质量</li>
+          <li>单条剪辑视频最高播放 <b>175 万</b>，二创内容拉动剧集预约 <b>28 万+</b></li>
+          <li>熟悉短剧节奏语法：前 3 秒钩子、冲突前置、卡点转场、反转收尾</li>
+          <li>独立完成从素材整理到成品输出的全流程，平均单条切片 4 小时内交付</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-h">经历时间线</div>
+    <div class="timeline" style="max-width:760px">
+      <div class="tl-item"><div class="time">在职期间</div><h4>乐道互娱 · 策划部宣传组</h4><p>负责短剧项目宣发物料的剪辑与制作：剧情切片、混剪二创、花絮定妆、平台官方成片，同时参与话题策划与数据复盘，形成「剪辑—投放—反馈—迭代」闭环。</p></div>
+      <div class="tl-item"><div class="time">项目实战</div><h4>《金丝笼》《卖艺不卖身，王妃别加钱了》等 10+ 项目</h4><p>独立完成角色混剪、群像二创与剧情切片剪辑；多条成片成为账号爆款内容，支撑账号冷启动涨粉 4 万+。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact">
+      <span>📱 微信：CHUJH0203</span>
+      <span>📮 jianghe.chu@foxmail.com</span>
+    </div>
+    每一帧，都为被看见而剪。
+  </div>
+</footer>
+
+</body>
+</html>
