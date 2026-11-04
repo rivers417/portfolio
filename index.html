@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>褚江贺 · 剧集运营作品集</title>
+<style>
+  :root{
+    --bg:#0d0d12;
+    --bg2:#15151d;
+    --card:#1b1b26;
+    --line:rgba(255,255,255,.08);
+    --txt:#f2f2f5;
+    --sub:#9a9aa8;
+    --accent:#ff5a3c;
+    --accent2:#ff8a3c;
+    --gold:#ffc857;
+    font-size:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.7;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ===== 顶部导航 ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,13,18,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:1.05rem;letter-spacing:.05em}
+  .logo span{color:var(--accent)}
+  nav .links{display:flex;gap:28px;font-size:.9rem;color:var(--sub)}
+  nav .links a:hover{color:var(--txt)}
+  @media(max-width:640px){nav .links{display:none}}
+
+  /* ===== Hero ===== */
+  header{position:relative;padding:110px 0 90px;background:
+    radial-gradient(600px 300px at 15% 20%,rgba(255,90,60,.16),transparent),
+    radial-gradient(700px 350px at 85% 80%,rgba(255,138,60,.10),transparent)}
+  .badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:.78rem;padding:4px 14px;border-radius:999px;letter-spacing:.2em;margin-bottom:22px}
+  h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.25}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{color:var(--sub);margin:20px 0 34px;max-width:640px;font-size:1.05rem}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:14px 30px;color:var(--sub);font-size:.9rem}
+  .hero-meta b{color:var(--txt);font-weight:600}
+  .cta{display:inline-block;margin-top:36px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:700;padding:13px 36px;border-radius:10px;transition:transform .2s}
+  .cta:hover{transform:translateY(-2px)}
+
+  /* ===== 数据条 ===== */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:-50px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;text-align:center}
+  .stat .num{font-size:1.7rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lab{color:var(--sub);font-size:.82rem;margin-top:4px}
+
+  /* ===== 通用 section ===== */
+  section{padding:80px 0 20px}
+  .sec-tag{color:var(--accent);font-size:.8rem;letter-spacing:.3em;font-weight:700}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin:8px 0 36px}
+  h2 small{color:var(--sub);font-size:.95rem;font-weight:400;margin-left:12px}
+
+  /* ===== 项目案例 ===== */
+  .case{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:38px;margin-bottom:34px}
+  .case.flip{grid-template-columns:.9fr 1.1fr}
+  .case.flip .case-text{order:2}
+  @media(max-width:860px){.case,.case.flip{grid-template-columns:1fr}.case.flip .case-text{order:0}}
+  .case-tag{display:inline-block;background:rgba(255,90,60,.15);color:var(--accent);font-size:.75rem;padding:3px 12px;border-radius:6px;margin-bottom:12px;font-weight:700}
+  .case h3{font-size:1.35rem;font-weight:800;margin-bottom:6px}
+  .case .role{color:var(--gold);font-size:.85rem;margin-bottom:14px}
+  .case p{color:var(--sub);font-size:.95rem}
+  .case ul{margin:14px 0 0 18px;color:var(--sub);font-size:.92rem}
+  .case ul li{margin-bottom:6px}
+  .case ul b{color:var(--txt)}
+  .case-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .case-imgs img{width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;transition:transform .25s}
+  .case-imgs img:hover{transform:scale(1.03)}
+  .case-imgs .tall{grid-row:span 2;height:100%}
+
+  /* ===== 能力 ===== */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .skill .ico{font-size:1.5rem}
+  .skill h4{font-size:1rem;margin:10px 0 6px}
+  .skill p{color:var(--sub);font-size:.86rem}
+
+  /* ===== 时间线 ===== */
+  .timeline{border-left:2px solid var(--line);padding-left:26px;margin-left:8px}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item::before{content:"";position:absolute;left:-33px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,60,.2)}
+  .tl-item .time{color:var(--accent);font-size:.82rem;font-weight:700}
+  .tl-item h4{font-size:1.02rem;margin:4px 0}
+  .tl-item p{color:var(--sub);font-size:.88rem}
+
+  footer{margin-top:90px;border-top:1px solid var(--line);padding:44px 0 60px;text-align:center;color:var(--sub);font-size:.88rem}
+  footer b{color:var(--txt)}
+  footer .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 36px;margin:16px 0 22px}
+
+  /* ===== 视频播放区 ===== */
+  .vgrid{display:grid;gap:20px}
+  .vgrid-main{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .vgrid-small{grid-template-columns:repeat(2,1fr);gap:14px}
+  .vgrid-small .vmeta{min-height:auto;padding:10px 12px}
+  .vgrid-small .vmeta h4{font-size:.82rem;-webkit-line-clamp:2}
+  .vgrid-small .vmeta p{font-size:.7rem;margin-top:2px}
+  @media(min-width:900px){.vgrid-small{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:420px){.vgrid-small{grid-template-columns:repeat(2,1fr);gap:10px}}
+  .vitem{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .vitem:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .vframe{position:relative;aspect-ratio:9/16;background:#000}
+  .vframe video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .vmeta{padding:14px 16px;min-height:72px}
+  .vmeta h4{font-size:.95rem;font-weight:700;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vmeta p{color:var(--sub);font-size:.8rem;margin-top:5px}
+  .views{color:var(--accent);font-weight:800}
+
+  .vempty{border:1.5px dashed rgba(255,90,60,.35);border-radius:16px;padding:44px 24px;text-align:center;background:rgba(255,90,60,.04)}
+  .vempty-inner h4{font-size:1.05rem;margin:10px 0 8px}
+  .vempty-inner p{color:var(--sub);font-size:.88rem;max-width:520px;margin:0 auto}
+  .vbtn{display:inline-block;margin-top:18px;border:1px solid var(--accent);color:var(--accent);font-size:.85rem;font-weight:700;padding:9px 24px;border-radius:8px;transition:.2s}
+  .vbtn:hover{background:var(--accent);color:#fff}
+
+  /* ===== 数据战绩 ===== */
+  .sub-h{font-size:1.1rem;font-weight:800;margin:56px 0 20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sub-h small{color:var(--sub);font-size:.82rem;font-weight:400}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .shot img{width:100%;display:block;transition:transform .3s}
+  .shot:hover img{transform:scale(1.04)}
+  .shot figcaption{padding:12px 14px;font-size:.85rem;line-height:1.6}
+  .shot figcaption b{color:var(--accent);font-size:1rem}
+  .shot figcaption span{color:var(--sub);font-size:.78rem}
+
+
+  /* ===== 线上作品链接 ===== */
+  .links3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .linkslot{display:flex;align-items:center;gap:14px;background:var(--card);border:1px dashed rgba(255,255,255,.18);border-radius:12px;padding:18px 20px;transition:.2s}
+  .linkslot:hover{border-color:var(--accent);background:rgba(255,90,60,.05)}
+  .linkslot .n{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0}
+  .linkslot h4{font-size:.95rem}
+  .linkslot p{color:var(--sub);font-size:.78rem;margin-top:2px}
+  /* ===== 预约转化 ===== */
+  .convert{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px}
+  @media(max-width:640px){.convert{grid-template-columns:1fr;text-align:center}.convert .arrow{transform:rotate(90deg)}}
+  .convert figure{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .convert figure img{width:100%;display:block}
+  .convert figcaption{background:var(--card);padding:12px;font-size:.85rem;text-align:center;color:var(--sub)}
+  .convert figcaption b{color:var(--accent);font-size:1.1rem}
+  .convert .arrow{font-size:1.8rem;color:var(--accent);font-weight:900}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">褚江贺<span>.</span>作品集</div>
+    <div class="links">
+      <a href="#cases">项目案例</a>
+      <a href="#videos">剪辑作品</a>
+      <a href="#skills">能力雷达</a>
+      <a href="#about">关于我</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="badge">剧集运营 / 影视宣发</span>
+    <h1>让每一部剧<br>都被更多人<em>看见</em>。</h1>
+    <p class="hero-sub">深耕影视新媒体宣发赛道，熟悉短剧、网大、中剧全流程宣发。独立负责 8 部短剧完整宣发周期，累计参与影视项目 15+，擅长内容策划、话题运营、高光切片剪辑与数据复盘。</p>
+    <div class="hero-meta">
+      <span>📱 抖音 / 红果 / 视频号 / 腾讯视频 / 小红书</span>
+      <span>🎬 乐道互娱 · 策划部宣传组</span>
+    </div>
+    <a class="cta" href="#cases">查看项目案例 ↓</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="num">15+</div><div class="lab">参与影视项目</div></div>
+    <div class="stat"><div class="num">8部</div><div class="lab">独立负责全周期宣发</div></div>
+    <div class="stat"><div class="num">150+</div><div class="lab">原创宣发文案</div></div>
+    <div class="stat"><div class="num">175万</div><div class="lab">单条视频最高播放</div></div>
+    <div class="stat"><div class="num">28万+</div><div class="lab">二创拉动剧集预约</div></div>
+    <div class="stat"><div class="num">4万+</div><div class="lab">账号冷启动涨粉</div></div>
+  </div>
+</div>
+
+<!-- ============ 项目案例 ============ -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-tag">PROJECT CASES</div>
+    <h2>核心项目案例<small>短剧宣发 · 全链路运营</small></h2>
+
+    <!-- 案例1 后宫第一闺蜜团 -->
+    <div class="case">
+      <div class="case-text">
+        <span class="case-tag">公司自制 · 全周期宣发</span>
+        <h3>《后宫第一闺蜜团》宣发运营</h3>
+        <div class="role">宣发负责人 · 抖音 & 红果双平台运营</div>
+        <p>公司自制短剧项目，从上线冷启动到宣发收尾独立负责全周期运营，把控内容质感与宣发节奏。</p>
+        <ul>
+          <li>独立完成<b>话题搭建与热点运营</b>，精细化运营剧集站内热度、搜索量与预约转化</li>
+          <li>独立策划二创视频在红果平台播放 <b>264.2万</b>，剧集站内预约从 7385 人拉升至 <b>28.6万人</b></li>
+          <li>独立策划剧集专场直播，撰写全套直播脚本、互动话术与节奏方案，对接艺人主创团队</li>
+        </ul>
+      </div>
+      <div class="case-imgs compare2">
+        <img src="assets/hongguo_early.jpg" alt="红果预约早期7385人">
+        <img src="assets/hongguo_286.jpg" alt="红果预约28.6万人">
+      </div>
+    </div>
+
+    <!-- 案例2 猫神之重铸荣耀 -->
+    <div class="case flip">
+      <div class="case-text">
+        <span class="case-tag">高光切片 · 数据爆款</span>
+        <h3>《猫神之重铸荣耀》宣发运营</h3>
+        <div class="role">宣发负责人</div>
+        <ul>
+          <li>累计打造<b>百万播放视频 5 条、10万+ 播放视频 20 余条</b>，单条最高播放 <b>175万</b></li>
+          <li>运营抖音、红果双平台账号，依托剧情亮点产出各类文案内容创作，打造平台爆款传播视频</li>
+        </ul>
+      </div>
+      <div class="case-imgs">
+        <img src="assets/maoshen_account.jpg" alt="红果账号高光切片矩阵">
+        <img src="assets/dy_179.jpg" alt="抖音播放179万数据">
+      </div>
+    </div>
+
+    <!-- 案例3 公司短剧宣发运营 -->
+    <div class="case" style="grid-template-columns:1fr">
+      <div class="case-text">
+        <span class="case-tag">多平台文案 · 直播全案</span>
+        <h3>公司短剧宣发运营项目</h3>
+        <div class="role">宣发负责人 · 冷启动到数据复盘全链路</div>
+        <p>负责公司短剧项目新媒体宣发与内容统筹，涵盖上线冷启动、物料筹备审核、文案创作、团队对接与数据复盘。</p>
+        <ul>
+          <li>独立完成 <b>2 场短剧专场直播</b>整体策划：《后宫第一闺蜜团》直播脚本、互动话术与节奏方案，全程对接艺人主创团队</li>
+          <li>按剧集题材差异化产出海报 Slogan、短视频配文、种草推文、社群文案 <b>150+ 篇</b></li>
+          <li>独立制作多部短剧宣发排期，形成<b>标准化可复用宣发流程</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 剪辑作品 ============ -->
+<section id="videos">
+  <div class="wrap">
+    <div class="sec-tag">EDITING WORKS</div>
+    <h2>剪辑作品<small>高光切片 · 二创 · 物料</small></h2>
+    <p style="color:var(--sub);font-size:.92rem;margin:-20px 0 30px;max-width:720px">挑剧情最强冲突点、人物最高光时刻，用前 3 秒钩子 + 情绪递进节奏，把长剧集切成能单独传播的短视频。</p>
+
+    <!-- 视频播放区：VIDEO_LIST_START -->
+    <h3 class="sub-h" style="margin-top:0">🎬 主推作品<small>3 条</small></h3>
+    <div class="vgrid vgrid-main" id="videoGrid">
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p01.jpg" data-src="assets/videos/v01_4006.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《卖艺不卖身，王妃别加钱了》男主被挑衅</h4><p>剧集高光 · 冲突切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p02.jpg" data-src="assets/videos/v02_4153.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《卖艺不卖身，王妃别加钱了》女主利诱男主</h4><p>剧集高光 · 剧情钩子</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p03.jpg" data-src="assets/videos/v03_9933.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《卖艺不卖身，王妃别加钱了》男女主拥抱</h4><p>剧集高光 · 情感名场面</p></div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">🎞 更多剪辑<small>《明月入君怀》5 条 · 《金丝笼》1 条</small></h3>
+    <div class="vgrid vgrid-small">
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p04.jpg" data-src="assets/videos/v04_2293.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》吃醋</h4><p>剧集高光 · 情感切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p05.jpg" data-src="assets/videos/v05_3401.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》回门</h4><p>剧集高光 · 剧情切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p06.jpg" data-src="assets/videos/v06_2550.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》婚房</h4><p>剧集高光 · 剧情切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p07.jpg" data-src="assets/videos/v07_8195.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》婚房②</h4><p>剧集高光 · 剧情切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p08.jpg" data-src="assets/videos/v08_2447.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》女鬼</h4><p>剧集高光 · 悬念切片</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p09.jpg" data-src="assets/videos/v09_5321.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《明月入君怀》亲亲</h4><p>剧集高光 · 情感名场面</p></div>
+      </div>
+      <div class="vitem">
+        <div class="vframe"><video controls preload="metadata" poster="assets/posters/p10.jpg" data-src="assets/videos/v10_1036.mp4" playsinline></video></div>
+        <div class="vmeta"><h4>《金丝笼》男女主混剪</h4><p>角色混剪 · 二创</p></div>
+      </div>
+    </div>
+    <!-- VIDEO_LIST_END -->
+
+    <!-- 红果线上发布作品（预留3条链接位） -->
+    <h3 class="sub-h">📺 红果在架作品<small>本人剪辑 · 平台预览</small></h3>
+    <div class="links3">
+      <a class="linkslot" href="https://novelquickapp.com/s/ZJkjJtGZ5CI/" target="_blank" rel="noopener">
+        <div class="n">1</div>
+        <div><h4>《金丝笼》困于《金丝笼》，囚于人心</h4><p>红果 · 乐道短剧场 · 点击跳转观看</p></div>
+      </a>
+      <a class="linkslot" href="https://novelquickapp.com/s/iB7mK1Fjg7E/" target="_blank" rel="noopener">
+        <div class="n">2</div>
+        <div><h4>《金丝笼》是谁在花港观鱼，而我在看你</h4><p>红果 · 乐道短剧场 · 点击跳转观看</p></div>
+      </a>
+      <a class="linkslot" href="https://novelquickapp.com/s/LvwuoCP9EwE/" target="_blank" rel="noopener">
+        <div class="n">3</div>
+        <div><h4>《华大毕业，我在霓虹国捣毁毒枭》你不要太过分！</h4><p>红果 · 乐道短剧场 · 点击跳转观看</p></div>
+      </a>
+    </div>
+
+    <!-- 数据战绩 -->
+    <h3 class="sub-h">📊 数据战绩截图<small>真实后台 · 可核验</small></h3>
+    <div class="shots">
+      <figure class="shot">
+        <img src="assets/dy_179.jpg" alt="单条播放179万">
+        <figcaption><b>179万</b> 播放 · 4.6万赞 · 7150评论<br><span>抖音 单条爆款二创切片</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/dy_813.jpg" alt="播放81.3万">
+        <figcaption><b>81.3万</b> 播放 · 6219赞 · 402评论<br><span>抖音 剧情向剪辑切片</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/dy_426.jpg" alt="播放42.6万">
+        <figcaption><b>42.6万</b> 播放 · 涨粉212 · 完播4.25%<br><span>抖音 切片带动预约28万+</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/dy_216.jpg" alt="播放21.6万">
+        <figcaption><b>21.6万</b> 播放 · 1140赞 · 242收藏<br><span>抖音 剧集看点切片</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/dy_106.jpg" alt="播放10.6万">
+        <figcaption><b>10.6万</b> 播放 · 1256赞 · 145收藏<br><span>抖音 物料切片</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/hougon_card.jpg" alt="264.2万播放">
+        <figcaption><b>264.2万</b> 播放 · 2万赞<br><span>红果视频 《后宫第一闺蜜团》二创</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 能力雷达 ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-tag">CAPABILITIES</div>
+    <h2>能力雷达<small>运营 × 内容 × 数据</small></h2>
+    <div class="grid3">
+      <div class="skill"><div class="ico">📣</div><h4>全链路宣发运营</h4><p>内容策划 → 排期制作 → 话题运营 → 用户互动 → 数据监测复盘，形成标准化可复用流程</p></div>
+      <div class="skill"><div class="ico">✍️</div><h4>多平台文案创作</h4><p>海报 Slogan、短视频配文、种草推文、社群推广、Push/SNS 文案，累计产出 150+ 篇</p></div>
+      <div class="skill"><div class="ico">✂️</div><h4>视频剪辑</h4><p>剪映 / Adobe 全家桶，高光切片、预告物料、二创短视频，主打冲突感节奏与情绪钩子</p></div>
+      <div class="skill"><div class="ico">🎥</div><h4>直播全案执行</h4><p>直播主题策划、脚本与互动话术撰写、艺人主创对接、现场节奏把控，独立落地 2 场短剧专场</p></div>
+      <div class="skill"><div class="ico">📊</div><h4>数据复盘</h4><p>抖音 / 红果后台数据监测，播放、完播、涨粉、预约转化全指标复盘，反哺内容策略</p></div>
+      <div class="skill"><div class="ico">🛡️</div><h4>物料审核 & 舆情</h4><p>视频物料 / 海报审核校对，艺人舆情处理，口碑维护与剧期联动宣传</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 关于我 ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-tag">ABOUT ME</div>
+    <h2>关于我</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="time">2026.01 - 2026.10</div>
+        <h4>乐道互娱文化传媒有限公司 · 策划部宣传组（实习生）</h4>
+        <p>深耕影视新媒体宣发，独立负责 8 部短剧完整宣发周期，参与影视项目 15+，覆盖短剧、网大、中剧、艺人宣发全流程。</p>
+      </div>
+      <div class="tl-item">
+        <div class="time">2024.09 - 2028.06</div>
+        <h4>北京联合大学 · 网络与新媒体专业（本科在读）</h4>
+        <p>主修：网络舆情监测与研判、非线性编辑、创意写作、剧本创作等</p>
+      </div>
+    </div>
+    <div class="grid3" style="margin-top:24px">
+      <div class="skill"><h4>🧰 工具技能</h4><p>剪映 · Adobe 全家桶（PS / PR / AE）· Office · 国内外 AI 辅助办公工具</p></div>
+      <div class="skill"><h4>🗣️ 语言技能</h4><p>英语 CET-4 · 普通话二级甲等</p></div>
+      <div class="skill"><h4>🎯 求职意向</h4><p>短剧运营 / 新媒体运营 · 可立即到岗</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>褚江贺 · 剧集运营作品集</b>
+    <div class="contact">
+      <span>📞 +86 132-3168-8768</span>
+      <span>📮 jianghe.chu@foxmail.com</span>
+    </div>
+    让内容被看见，让数据会说话。
+  </div>
+</footer>
+
+
+<script>
+/* 视频按需加载：滚动到视口附近才设置 src，避免一次性加载 26MB */
+(function(){
+  var vids = [].slice.call(document.querySelectorAll('video[data-src]'));
+  if(!('IntersectionObserver' in window)){
+    vids.forEach(function(v){ v.src = v.getAttribute('data-src'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var v = e.target;
+        if(!v.src){ v.src = v.getAttribute('data-src'); }
+        io.unobserve(v);
+      }
+    });
+  }, {rootMargin:'400px'});
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+</body>
+</html>
